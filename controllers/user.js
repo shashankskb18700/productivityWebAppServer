@@ -22,11 +22,10 @@ async function handleUserLogIn(req, res) {
     return res.send("your email or password is wrong");
   }
 
-  const sessionId = uuidv4();
-  setUser(sessionId, user);
-  res.cookie("uid", sessionId);
+  const token = setUser(user);
+  res.cookie("uid", token);
 
-  return res.send("Your logged in " + sessionId);
+  return res.send("Your logged in " + token);
 }
 
 module.exports = {
