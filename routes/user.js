@@ -1,4 +1,3 @@
-const { profile } = require("console");
 const { handleUserSignUp, handleUserLogIn } = require("../controllers/user");
 const restrictToLoggedInUser = require("../middleware/user");
 const passport = require("passport");

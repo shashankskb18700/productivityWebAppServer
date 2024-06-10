@@ -1,15 +1,18 @@
 const { getUser } = require("../services/auth");
+const { handleUserLogIn } = require("../controllers/user");
 
 async function restrictToLoggedInUser(req, res, next) {
-  // const userUid = req.cookie?.uid;
+  const userUid = req.cookies?.uid;
+  // console.log(req);
 
-  // if (!userUid) return res.send("please login to proceed");
+  if (!userUid) handleUserLogIn(req, res);
 
-  // const user = getUser(userUid);
+  const user = getUser(userUid);
 
-  // if (!user) return res.send("please login to proceed");
+  if (!user) handleUserLogIn(req, res);
 
-  // req.user = user;
+  req.user = user;
+
   next();
 }
 

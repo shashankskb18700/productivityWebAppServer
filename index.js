@@ -20,10 +20,8 @@ app.use(
 );
 app.use(cors());
 
-// connection("mongodb://127.0.0.1:27017/productivityWebApp");
+connection("mongodb://127.0.0.1:27017/productivityWebApp");
 
 UserRouter(app);
-
-app.get("/auth", (req, res) => {});
 
 app.listen(5000);
