@@ -24,9 +24,15 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("user connected");
   console.log(socket.id);
-  socket.on("send-change", (delta) => {
-    // console.log(delta);
-    socket.broadcast.emit("recevied-change", delta);
+
+  socket.on("get-document", (documentId) => {
+    const data = "";
+    socket.join(documentId);
+    socket.emit("load-document", data);
+    socket.on("send-change", (delta) => {
+      // console.log(delta);
+      socket.broadcast.to(documentId).emit("recevied-change", delta);
+    });
   });
 });
 
