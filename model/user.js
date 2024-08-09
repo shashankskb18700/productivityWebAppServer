@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const { type } = require("os");
-const { PassThrough } = require("stream");
 
 const userSchema = new mongoose.Schema({
   name: {

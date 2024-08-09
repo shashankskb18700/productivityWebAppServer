@@ -8,6 +8,8 @@ async function handleUserSignUp(req, res) {
 
   User.create({ name, email, password });
 
+  // here you just send you are signed up which does note mean anything or after this you should tell them to log in in or  send email for verifcation 
+
   return res.send("Your sigind up");
 }
 
