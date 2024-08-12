@@ -19,6 +19,7 @@ module.exports = passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(accessToken);
+      console.log(profile);
       console.log(refreshToken);
       done(null, profile);
     }

@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
     type: "string",
     required: true,
   },
+  projectId: [String],
+
+  todo: [String],
+
+  kanban: [String],
 });
 
 const User = new mongoose.model("user", userSchema);
