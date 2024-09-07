@@ -3,12 +3,11 @@ const { v4: uuidv4 } = require("uuid");
 const { setUser } = require("../services/auth");
 
 async function handleUserSignUp(req, res) {
-  console.log(req.body);
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-  User.create({ name, email, password });
+  await User.create({ username, email, password });
 
-  // here you just send you are signed up which does note mean anything or after this you should tell them to log in in or  send email for verifcation 
+  // here you just send you are signed up which does note mean anything or after this you should tell them to log in in or  send email for verifcation
 
   return res.send("Your sigind up");
 }
@@ -25,9 +24,10 @@ async function handleUserLogIn(req, res) {
   }
 
   const token = setUser(user);
-  res.cookie("uid", token);
+  return res.cookie("uid", token).redirect("http://localhost:3000");
 
-  return res.send("Your logged in " + token);
+  //redirect is required
+  // return res.send("Your logged in " + token);
 }
 
 module.exports = {

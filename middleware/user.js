@@ -5,11 +5,13 @@ async function restrictToLoggedInUser(req, res, next) {
   const userUid = req.cookies?.uid;
   // console.log(req);
 
-  if (!userUid) handleUserLogIn(req, res);
+  if (!userUid) {
+    return handleUserLogIn(req, res);
+  }
 
   const user = getUser(userUid);
 
-  if (!user) handleUserLogIn(req, res);
+  if (!user) return handleUserLogIn(req, res);
 
   req.user = user;
 
